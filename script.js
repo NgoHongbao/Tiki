@@ -1,6 +1,6 @@
 const CONFIG = {
   typeText: "Nếu mỗi lần nhớ em là một vì sao, chắc bầu trời của anh sáng mất rồi. ✨",
-  rainWords: ["♥", "♡", "love", "💗", "Pu", "Bắp", "forever", "♥"],
+  rainWords: ["♥", "♡", "love", "💗", "A Lương", "Bắp", "forever", "♥"],
 };
 
 const $ = (s) => document.querySelector(s);
