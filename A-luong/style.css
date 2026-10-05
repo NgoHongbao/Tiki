@@ -1,0 +1,61 @@
+:root{
+  --bg:#09040c;
+  --pink:#ff5d9e;
+  --pink2:#ff8abc;
+  --rose:#ff315f;
+  --white:#fff8fc;
+  --glass:rgba(255,255,255,.08);
+}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;background:var(--bg);color:var(--white);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;overflow:hidden}
+body{min-height:100svh;position:relative}
+button{font:inherit}
+#stars{position:fixed;inset:0;width:100%;height:100%;z-index:0}
+#heartRain{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:1}
+.scene{position:relative;z-index:3;min-height:100svh;display:grid;place-items:center;padding:24px}
+.vignette{position:fixed;inset:0;z-index:2;pointer-events:none;background:radial-gradient(circle at 50% 45%,transparent 20%,rgba(5,0,8,.22) 60%,rgba(2,0,4,.78) 100%)}
+.intro,.love-card,.final-message{grid-area:1/1;width:min(92vw,430px);text-align:center;transition:opacity .9s ease,transform .9s cubic-bezier(.2,.8,.2,1),filter .9s ease}
+.intro{position:relative;padding:40px 26px 34px;border:1px solid rgba(255,255,255,.12);border-radius:30px;background:linear-gradient(160deg,rgba(255,255,255,.10),rgba(255,255,255,.035));box-shadow:0 28px 90px rgba(0,0,0,.48),inset 0 1px rgba(255,255,255,.18);backdrop-filter:blur(16px)}
+.intro__halo{position:absolute;left:50%;top:72px;width:190px;height:190px;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(255,77,143,.42),rgba(255,77,143,.08) 48%,transparent 72%);filter:blur(5px);animation:pulseHalo 2.8s ease-in-out infinite}
+.intro__heart{position:relative;font-size:64px;line-height:1;color:var(--pink);filter:drop-shadow(0 0 18px rgba(255,61,127,.7));animation:heartbeat 1.7s ease-in-out infinite}
+.eyebrow,.love-card__small{margin:20px 0 8px;font-size:11px;letter-spacing:.28em;font-weight:700;color:rgba(255,255,255,.62)}
+h1{font-size:clamp(34px,10vw,54px);line-height:.98;margin:10px 0 14px;letter-spacing:-.045em}
+h1 span{display:inline-block;animation:wobble 2s ease-in-out infinite}
+.intro__copy{margin:0 auto 26px;max-width:300px;color:rgba(255,255,255,.7);line-height:1.65;font-size:14px}
+.start-btn{border:0;border-radius:999px;padding:14px 20px 14px 24px;color:white;background:linear-gradient(135deg,#ff3f80,#ff75ab);box-shadow:0 12px 35px rgba(255,48,111,.32);display:inline-flex;align-items:center;gap:12px;cursor:pointer;transition:transform .2s ease,box-shadow .2s ease}
+.start-btn:hover{transform:translateY(-2px);box-shadow:0 16px 40px rgba(255,48,111,.4)}
+.start-btn:active{transform:scale(.98)}
+.start-btn b{font-size:20px}
+.love-card{opacity:0;pointer-events:none;transform:translateY(22px) scale(.96);filter:blur(10px);position:relative;padding:34px 28px 26px;border-radius:32px;border:1px solid rgba(255,255,255,.13);background:linear-gradient(165deg,rgba(255,255,255,.11),rgba(255,255,255,.035));box-shadow:0 28px 90px rgba(0,0,0,.5);backdrop-filter:blur(18px);overflow:hidden}
+.love-card__shine{position:absolute;inset:-40% -60%;background:linear-gradient(115deg,transparent 35%,rgba(255,255,255,.11) 48%,transparent 61%);transform:translateX(-45%);animation:shine 6s ease-in-out infinite}
+.love-card h2{position:relative;margin:8px 0 16px;font-size:clamp(28px,8vw,40px);letter-spacing:-.04em}
+.type-line{position:relative;min-height:72px;margin:0 auto;color:#ffd9e8;font-family:Georgia,"Times New Roman",serif;font-style:italic;font-size:18px;line-height:1.65}
+.type-line::after{content:"";display:inline-block;width:1px;height:1.05em;background:#fff;margin-left:3px;vertical-align:-2px;animation:blink .75s step-end infinite}
+.divider{position:relative;display:flex;align-items:center;gap:12px;margin:18px 0;color:var(--pink)}
+.divider::before,.divider::after{content:"";height:1px;flex:1;background:linear-gradient(90deg,transparent,rgba(255,255,255,.2))}
+.divider::after{background:linear-gradient(90deg,rgba(255,255,255,.2),transparent)}
+.quote{position:relative;margin:0;color:rgba(255,255,255,.72);font-size:14px;line-height:1.75}
+.heart-btn{position:relative;margin:22px auto 6px;width:70px;height:70px;border:0;border-radius:50%;cursor:pointer;color:white;background:radial-gradient(circle at 34% 28%,#ff91bd,#ff3d78 55%,#d91f57 100%);box-shadow:0 0 0 8px rgba(255,69,128,.07),0 0 40px rgba(255,58,122,.5);transition:transform .2s ease}
+.heart-btn span{font-size:34px;line-height:1}
+.heart-btn:hover{transform:scale(1.08)}
+.heart-btn:active{transform:scale(.95)}
+.hint{margin:8px 0 0;color:rgba(255,255,255,.45);font-size:11px;letter-spacing:.08em}
+.final-message{opacity:0;pointer-events:none;transform:scale(.85);filter:blur(12px)}
+.final-message .big-heart{font-size:92px;color:var(--pink);filter:drop-shadow(0 0 30px rgba(255,56,126,.75));animation:heartbeat 1.4s ease-in-out infinite}
+.final-message p{margin:14px 0 9px;font-family:Georgia,"Times New Roman",serif;font-style:italic;font-size:clamp(22px,6vw,30px);line-height:1.5}
+.final-message strong{font-size:14px;color:#ffc2d8;letter-spacing:.08em}
+body.started .intro{opacity:0;pointer-events:none;transform:scale(.9);filter:blur(12px)}
+body.started .love-card{opacity:1;pointer-events:auto;transform:translateY(0) scale(1);filter:blur(0)}
+body.finished .love-card{opacity:0;pointer-events:none;transform:scale(1.08);filter:blur(14px)}
+body.finished .final-message{opacity:1;pointer-events:auto;transform:scale(1);filter:blur(0)}
+.falling-heart{position:absolute;top:-12vh;left:0;color:rgba(255,110,164,.75);filter:drop-shadow(0 0 8px rgba(255,62,130,.35));user-select:none;animation:fall linear forwards}
+.burst-heart{position:fixed;left:50%;top:50%;z-index:9;pointer-events:none;color:#ff77ae;font-size:24px;filter:drop-shadow(0 0 8px rgba(255,77,143,.55));animation:burst 1.15s cubic-bezier(.17,.67,.22,1) forwards}
+@keyframes heartbeat{0%,100%{transform:scale(1)}15%{transform:scale(1.14)}30%{transform:scale(1)}45%{transform:scale(1.08)}60%{transform:scale(1)}}
+@keyframes pulseHalo{0%,100%{transform:translate(-50%,-50%) scale(.9);opacity:.7}50%{transform:translate(-50%,-50%) scale(1.14);opacity:1}}
+@keyframes wobble{0%,100%{transform:rotate(-5deg)}50%{transform:rotate(5deg)}}
+@keyframes blink{50%{opacity:0}}
+@keyframes shine{0%,58%{transform:translateX(-55%)}78%,100%{transform:translateX(55%)}}
+@keyframes fall{to{transform:translate3d(var(--drift),115vh,0) rotate(var(--spin));opacity:.05}}
+@keyframes burst{0%{transform:translate(-50%,-50%) scale(.6);opacity:0}15%{opacity:1}100%{transform:translate(calc(-50% + var(--x)),calc(-50% + var(--y))) scale(1.35) rotate(var(--r));opacity:0}}
+@media (max-width:480px){.scene{padding:18px}.intro,.love-card{border-radius:26px}.intro{padding:34px 21px 29px}.love-card{padding:30px 22px 24px}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important}}
